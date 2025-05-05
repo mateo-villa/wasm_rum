@@ -62,7 +62,7 @@ Visit [http://localhost:8000](http://localhost:8000) or [http://localhost:8080](
 
 ## Customizing for Your Project
 
-- Replace `YOUR_APP_ID` and `YOUR_CLIENT_TOKEN` in `index.html` with your actual Datadog RUM credentials.
+- Replace `<APPLICATION_ID>` and `<CLIENT_TOKEN>` in `index.html` with your actual Datadog RUM credentials.
 - To log more events or actions from Rust, expose additional JS functions via `wasm-bindgen`.
 
 ## Resources
