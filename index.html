@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Datadog RUM + WebAssembly</title>
+    <script src="https://www.datadoghq-browser-agent.com/us1/v6/datadog-rum.js"></script>
+    <script type="module">
+      import init, { trigger_error } from "./pkg/wasm_rum.js";
+      import { logWasmError } from "./rum-bridge.js";
+
+      window.DD_RUM &&
+        window.DD_RUM.init({
+          applicationId: "96569a18-27dc-49d6-849d-4c9e097eec9e",
+          clientToken: "pubb552afeaaca167dbdc6d55ba476d3c81",
+          site: "datadoghq.com",
+          service: "wasm-rum-example",
+          env: "dev",
+          version: "1.0.0",
+          sampleRate: 100,
+          sessionReplaySampleRate: 100,
+          trackInteractions: true,
+          defaultPrivacyLevel: "allow",
+        });
+
+      window.logWasmError = logWasmError;
+
+      init().then(() => {
+        // Call the Rust function that triggers an error
+        const button = document.getElementById("trigger");
+        button.addEventListener("click", () => {
+          trigger_error();
+
+          // Update button text
+          const originalText = button.textContent;
+          button.textContent = "Error Sent to Datadog";
+
+          // Revert after 1.5 seconds
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 1500);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Datadog RUM + WebAssembly Example</h1>
+    <button id="trigger">Trigger Rust Error</button>
+  </body>
+</html>
