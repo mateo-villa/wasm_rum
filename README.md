@@ -28,7 +28,7 @@ Then visit: [http://localhost:8080](http://localhost:8080)
 - [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)
 - [Node.js](https://nodejs.org/) (optional, for `http-server`)
 
-### 🛠️ Step 1: Build WebAssembly
+### Step 1: Build WebAssembly
 
 ```bash
 wasm-pack build --target web
@@ -36,7 +36,7 @@ wasm-pack build --target web
 
 This generates a `pkg/` folder with `wasm_rum.js` and `wasm_rum_bg.wasm`.
 
-### 🌐 Step 2: Serve Locally
+### Step 2: Serve Locally
 
 #### Option A: Python HTTP Server
 
