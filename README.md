@@ -6,51 +6,13 @@ When the user clicks a button on the page, a Rust function is invoked via WebAss
 
 ## Running with Docker
 
-Build the container:
+Run the following `docker-compose` command to build the container and run the local server:
 
 ```bash
-docker build -t wasm-rum-app .
-```
-
-Run it:
-
-```bash
-docker run -p 8080:8080 wasm-rum-app
+docker-compose up --build
 ```
 
 Then visit: [http://localhost:8080](http://localhost:8080)
-
-## Running Locally
-
-### Prerequisites
-
-- [Rust](https://www.rust-lang.org/tools/install)
-- [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)
-- [Node.js](https://nodejs.org/) (optional, for `http-server`)
-
-### Step 1: Build WebAssembly
-
-```bash
-wasm-pack build --target web
-```
-
-This generates a `pkg/` folder with `wasm_rum.js` and `wasm_rum_bg.wasm`.
-
-### Step 2: Serve Locally
-
-#### Option A: Python HTTP Server
-
-```bash
-python3 -m http.server
-```
-
-#### Option B: Node.js HTTP Server
-
-```bash
-npx http-server .
-```
-
-Visit [http://localhost:8000](http://localhost:8000) or [http://localhost:8080](http://localhost:8080).
 
 ## How It Works
 
